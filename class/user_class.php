@@ -25,6 +25,16 @@ class user  {
         $result = $preparedQuery->execute();
         return $result;
     }
+    
+    public function register() : bool   {
+        $passwordHash = password_hash($this->password, PASSWORD_ARGON2I);
+        $query = "INSERT INTO user VALUES (NULL, ?, ?, ?, ?)";
+        $preparedQuery = $this->db->prepare($query); 
+        $preparedQuery->bind_param('ssss', $this->login, $passwordHash, 
+                                            $this->firstName, $this->lastName);
+        $result = $preparedQuery->execute();
+        return $result;
+    }
 
     public function login() : bool {   
         $query = "SELECT * FROM user WHERE login = ? LIMIT 1";
@@ -54,7 +64,11 @@ class user  {
         $this->lastname = $nazwisko;
     }
     public function getname() : string  {
+<<<<<<< HEAD
         return $this->firstname . " " . $this->lastname;
+=======
+        return $this->firstname . " " . $this->lastname
+>>>>>>> 3ce05127637a8b02d133d92155b7075b93362be3
         }
 }
 ?>

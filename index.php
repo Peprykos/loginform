@@ -1,23 +1,14 @@
 <?php
-require_once('vendor/autoload.php');
+
+use Steampixel\Route;
+
 require_once('config.php');
 require_once('class/User.class.php');
 
-echo $twig->render('index', ['name' => 'Patryk']);
+Route::add('/login', function() {
+    echo "Strona Główna";
+});
 
-//$user = new User('jkowalski', 'tajneHasło');
-/*
-if($user->register()) {
-    echo "Zarejestrowano poprawnie";
-} else {
-    echo "Błąd rejestracji użytkownika";
-}
-*/
+Route::run('loginform');
 
-/*if($user->login()) {
-    echo "Zalogowano poprawnie";
-} else {
-    echo "Błędny login lub hasło";
-}
-*/
 ?>

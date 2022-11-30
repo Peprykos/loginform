@@ -1,11 +1,8 @@
 <?php
-require_once('vendor/autoload.php');
 require_once('config.php');
 require_once('class/User.class.php');
 
-echo $twig->render('index', ['name' => 'Patryk']);
-
-//$user = new User('jkowalski', 'tajneHasło');
+$user = new User('jkowalski', 'tajneHasło');
 /*
 if($user->register()) {
     echo "Zarejestrowano poprawnie";
@@ -14,10 +11,10 @@ if($user->register()) {
 }
 */
 
-/*if($user->login()) {
+if($user->login()) {
     echo "Zalogowano poprawnie";
 } else {
     echo "Błędny login lub hasło";
 }
-*/
+
 ?>
